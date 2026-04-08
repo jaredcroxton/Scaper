@@ -14,11 +14,12 @@
 ## Source Research (2026-04-08)
 
 ### Ben's Bites
-- Newsletter on Beehiiv platform (formerly Substack)
-- RSS feed available at: `https://bensbites.beehiiv.com/feed`
-- Alternative: `https://rss.beehiiv.com/feeds/` (need exact feed ID)
-- Bot protection on main site; RSS is the reliable path
-- Returns XML with title, link, pubDate, description
+- Newsletter on **Substack** platform (custom domain: bensbites.com)
+- RSS feed: `https://bensbites.substack.com/feed` (RSS 2.0)
+- Substack API also available: `https://bensbites.substack.com/api/v1/archive?sort=new&limit=12`
+- **Important:** Must use `bensbites.substack.com` subdomain, not `bensbites.com` (403 block)
+- Additional resources: `news.bensbites.com` (community-voted links), `catalog.bensbites.com` (tools directory)
+- Returns XML with title, link, pubDate, description, content:encoded
 
 ### The Rundown AI
 - Newsletter on Beehiiv platform

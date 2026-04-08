@@ -8,7 +8,7 @@
 
 | Source | Method | Endpoint |
 |---|---|---|
-| Ben's Bites | Substack RSS | `https://bensbites.beehiiv.com/feed` |
+| Ben's Bites | Substack RSS | `https://bensbites.substack.com/feed` |
 | The Rundown AI | Beehiiv RSS | `https://rss.beehiiv.com/feeds/2R3C6Bt5wj.xml` |
 | Reddit (r/artificial) | JSON API | `https://www.reddit.com/r/artificial/new.json?limit=50` |
 | Reddit (r/MachineLearning) | JSON API | `https://www.reddit.com/r/MachineLearning/new.json?limit=50` |

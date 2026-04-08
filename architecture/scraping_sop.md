@@ -22,7 +22,7 @@ Collect AI-related articles from the last 24 hours across multiple sources and o
 - **Output:** List of Article objects
 
 ### 2. Ben's Bites Scraper (`tools/scrape_bens_bites.py`)
-- **Endpoint:** RSS feed `https://bensbites.beehiiv.com/feed`
+- **Endpoint:** RSS feed `https://bensbites.substack.com/feed`
 - **Parser:** `feedparser` library
 - **Filter:** `published_parsed` within last 24 hours
 - **Output:** List of Article objects

@@ -15,7 +15,7 @@ from urllib.error import URLError, HTTPError
 from html import unescape
 import re
 
-RSS_FEED_URL = "https://bensbites.beehiiv.com/feed"
+RSS_FEED_URL = "https://bensbites.substack.com/feed"
 USER_AGENT = "ScaperBot/1.0"
 HOURS_WINDOW = 24
 SOURCE_NAME = "Ben's Bites"
