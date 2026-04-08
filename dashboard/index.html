@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scaper - AI Intelligence Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <div class="logo-icon">S</div>
+        <div class="logo-text">
+          <span class="logo-name">Scaper</span>
+          <span class="logo-sub">AI Intelligence</span>
+        </div>
+      </div>
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <span class="nav-label">Overview</span>
+        <a href="#" class="nav-item active" data-view="dashboard">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="10" y="1" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="10" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="10" y="10" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+          Dashboard
+        </a>
+        <a href="#" class="nav-item" data-view="saved">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 2H14C14.5523 2 15 2.44772 15 3V16L9 12.5L3 16V3C3 2.44772 3.44772 2 4 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          Saved Articles
+          <span class="nav-badge" id="savedCount">0</span>
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <span class="nav-label">Sources</span>
+        <a href="#" class="nav-item source-filter active" data-source="all">
+          <span class="source-dot dot-all"></span>
+          All Sources
+        </a>
+        <a href="#" class="nav-item source-filter" data-source="reddit">
+          <span class="source-dot dot-reddit"></span>
+          Reddit
+        </a>
+        <a href="#" class="nav-item source-filter" data-source="newsletter">
+          <span class="source-dot dot-newsletter"></span>
+          Newsletters
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <span class="nav-label">Subreddits</span>
+        <a href="#" class="nav-item source-filter" data-source="r/artificial">
+          <span class="source-dot dot-reddit"></span>
+          r/artificial
+        </a>
+        <a href="#" class="nav-item source-filter" data-source="r/MachineLearning">
+          <span class="source-dot dot-reddit"></span>
+          r/MachineLearning
+        </a>
+        <a href="#" class="nav-item source-filter" data-source="r/singularity">
+          <span class="source-dot dot-reddit"></span>
+          r/singularity
+        </a>
+        <a href="#" class="nav-item source-filter" data-source="r/ChatGPT">
+          <span class="source-dot dot-reddit"></span>
+          r/ChatGPT
+        </a>
+        <a href="#" class="nav-item source-filter" data-source="r/LocalLLaMA">
+          <span class="source-dot dot-reddit"></span>
+          r/LocalLLaMA
+        </a>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="refresh-info">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7C1 3.68629 3.68629 1 7 1C9.22222 1 11.1429 2.28571 12 4.14286M13 7C13 10.3137 10.3137 13 7 13C4.77778 13 2.85714 11.7143 2 9.85714" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M12 1V4.14286H8.85714" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 13V9.85714H5.14286" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span id="lastUpdated">Loading...</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main" id="main">
+    <!-- Top Bar -->
+    <header class="topbar">
+      <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="search-container">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M12.5 12.5L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search articles...">
+        <kbd class="search-kbd">/</kbd>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn-icon" id="refreshBtn" title="Refresh data">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M1.5 9C1.5 4.85786 4.85786 1.5 9 1.5C11.8571 1.5 14.3571 3.14286 15.5 5.57143M16.5 9C16.5 13.1421 13.1421 16.5 9 16.5C6.14286 16.5 3.64286 14.8571 2.5 12.4286" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15.5 1.5V5.57143H11.4286" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 16.5V12.4286H6.57143" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Stats Cards -->
+    <section class="stats-grid" id="statsGrid">
+      <div class="stat-card">
+        <div class="stat-header">
+          <span class="stat-icon stat-icon-articles">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 4C3 2.89543 3.89543 2 5 2H15C16.1046 2 17 2.89543 17 4V16C17 17.1046 16.1046 18 15 18H5C3.89543 18 3 17.1046 3 16V4Z" stroke="currentColor" stroke-width="1.5"/><path d="M7 7H13M7 10H13M7 13H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </span>
+          <span class="stat-label">Total Articles</span>
+        </div>
+        <div class="stat-value" id="statTotal">0</div>
+        <div class="stat-sub">Last 24 hours</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-header">
+          <span class="stat-icon stat-icon-sources">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M2 10H18M10 2C12.5 4.5 13.5 7 13.5 10C13.5 13 12.5 15.5 10 18M10 2C7.5 4.5 6.5 7 6.5 10C6.5 13 7.5 15.5 10 18" stroke="currentColor" stroke-width="1.5"/></svg>
+          </span>
+          <span class="stat-label">Sources Active</span>
+        </div>
+        <div class="stat-value" id="statSources">0</div>
+        <div class="stat-sub" id="statSourceNames">-</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-header">
+          <span class="stat-icon stat-icon-saved">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 3H15C15.5523 3 16 3.44772 16 4V17L10 13.5L4 17V4C4 3.44772 4.44772 3 5 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="stat-label">Saved</span>
+        </div>
+        <div class="stat-value" id="statSaved">0</div>
+        <div class="stat-sub">Your collection</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-header">
+          <span class="stat-icon stat-icon-trending">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 17L8 10L11 13L17 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 3H17V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="stat-label">Top Score</span>
+        </div>
+        <div class="stat-value" id="statTopScore">0</div>
+        <div class="stat-sub" id="statTopSub">Reddit upvotes</div>
+      </div>
+    </section>
+
+    <!-- View Title -->
+    <div class="view-header">
+      <h1 id="viewTitle">Latest Articles</h1>
+      <div class="view-controls">
+        <div class="sort-group">
+          <button class="sort-btn active" data-sort="date">Newest</button>
+          <button class="sort-btn" data-sort="score">Top Scored</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Articles Grid -->
+    <section class="articles-grid" id="articlesGrid">
+      <!-- Loading state -->
+      <div class="loading-state" id="loadingState">
+        <div class="loading-spinner"></div>
+        <p>Fetching latest AI intelligence...</p>
+      </div>
+    </section>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="emptyState" style="display: none;">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="8" y="8" width="48" height="48" rx="12" stroke="#E0E0E0" stroke-width="2"/><path d="M24 28H40M24 34H36M24 40H32" stroke="#E0E0E0" stroke-width="2" stroke-linecap="round"/></svg>
+      <h3>No articles found</h3>
+      <p>Try adjusting your filters or run the scraper to fetch new data.</p>
+    </div>
+  </main>
+
+  <!-- Article Detail Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="articleModal">
+      <button class="modal-close" id="modalClose" aria-label="Close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

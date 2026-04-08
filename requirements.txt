@@ -1,0 +1,10 @@
+# Scaper - AI Article Aggregator
+# All scrapers use Python standard library only (no external deps required)
+# Optional dependencies for enhanced functionality:
+
+# For production deployment with a proper web server:
+# flask>=3.0
+# gunicorn>=22.0
+
+# For Supabase integration (future):
+# supabase>=2.0
