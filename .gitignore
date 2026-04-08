@@ -1,0 +1,5 @@
+.env
+.tmp/*
+!.tmp/.gitkeep
+__pycache__/
+*.pyc
