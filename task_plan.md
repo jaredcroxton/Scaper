@@ -1,6 +1,6 @@
-# Task Plan
+# Task Plan - DIY Space Transformer
 
-## Status: Phase 4 - Stylize (Awaiting User Feedback)
+## Status: Phase 1 - Blueprint (Scaffolding)
 
 ---
 
@@ -10,51 +10,68 @@
 - [x] Create `task_plan.md`
 - [x] Create `findings.md`
 - [x] Create `progress.md`
-- [x] Create `claude.md` (Project Constitution)
-- [x] Create directory structure (`architecture/`, `tools/`, `.tmp/`)
-- [x] Discovery Questions answered
-- [x] Data Schema defined in `gemini.md`
-- [x] Blueprint approved
+- [x] Create `claude.md` (Project Constitution + Data Schema)
+- [x] Create `architecture/` folder
+- [x] Create `tools/` folder
+- [x] Create `.tmp/` folder
+- [x] Create `.env.example`
+- [ ] Data schema confirmed by user
 
-### Phase 1: Blueprint (Vision & Logic)
+### Phase 1: Blueprint (Vision and Logic)
 - [x] North Star defined
-- [x] Integrations identified & keys confirmed
-- [x] Source of Truth established
-- [x] Delivery Payload shape confirmed
+- [x] Integrations identified (Supabase, OpenAI, Gemini, Vercel)
+- [x] Source of Truth established (Supabase)
+- [x] Delivery Payload confirmed (web app with before/after + pricing table)
 - [x] Behavioral Rules documented
-- [x] JSON Data Schema written to `gemini.md`
-- [x] Research completed (Ben's Bites, The Rundown AI, Reddit)
+- [x] Monetisation model defined (Free 3/month, Pro 20/month $9.95)
+- [x] Refused project types listed
+- [ ] Pricing data approach confirmed (Option A vs B)
+- [ ] Schema approved
 
 ### Phase 2: Link (Connectivity)
-- [x] Scraper handshake scripts built
-- [ ] API credentials verified (blocked by sandbox; deferred to production)
-- [ ] All external services confirmed responding (deferred to production)
+- [ ] Supabase project created and credentials verified
+- [ ] OpenAI API key tested (GPT-Image-1 access confirmed)
+- [ ] Google Gemini API key tested
+- [ ] Next.js project initialised
+- [ ] Supabase tables created from schema
+- [ ] Auth flow verified (sign up, sign in, session)
+- [ ] Storage bucket created for photo uploads
 
 ### Phase 3: Architect (3-Layer Build)
-- [x] Architecture SOPs written in `architecture/`
-- [x] Navigation/routing logic designed
-- [x] Tool scripts built in `tools/` (3 scrapers + orchestrator + scheduler)
-- [x] Dashboard built (`dashboard/index.html`, `styles.css`, `app.js`)
-- [x] Local dev server (`serve.py`)
-- [x] Sample data generator for testing
+- [ ] Architecture SOPs written
+- [ ] Supabase schema migration script
+- [ ] Photo upload and storage flow
+- [ ] Gemini Vision analysis pipeline
+- [ ] GPT-Image-1 transformation pipeline
+- [ ] Pricing data layer (pending Option A/B decision)
+- [ ] Scan count enforcement (free/pro gates)
+- [ ] Subscription management (Stripe or manual)
+- [ ] Output rendering (before/after + pricing table)
 
 ### Phase 4: Stylize (Refinement)
-- [x] Design system applied (user-provided specs)
-- [x] Output payload formatted (card layout, modals, stats)
-- [x] UI/UX applied (responsive, interactive, search, filters, save)
-- [ ] User feedback collected ← **AWAITING**
+- [ ] Dark theme applied
+- [ ] Mobile-first responsive layout
+- [ ] Premium feel (typography, spacing, transitions)
+- [ ] Tip card UI for description input
+- [ ] Before/after side-by-side component
+- [ ] Pricing table with Buy Now links
+- [ ] Error states and refused-project messaging
+- [ ] User feedback collected
 
 ### Phase 5: Trigger (Deployment)
-- [ ] Cloud transfer completed
-- [ ] Supabase integration
-- [ ] Automation triggers configured (cron/scheduler)
-- [ ] Maintenance log finalized in `gemini.md`
+- [ ] Vercel deployment configured
+- [ ] Environment variables set in Vercel
+- [ ] Supabase Row Level Security policies applied
+- [ ] Domain connected
+- [ ] Monitoring and error tracking
+- [ ] Maintenance log finalised
 
 ---
 
 ## Notes
-- Scrapers use Python standard library only (no external deps).
-- Dashboard is pure HTML/CSS/JS (no framework).
-- `serve.py` for local development.
-- `tools/scheduler.py` for 24h automated runs.
-- Supabase integration planned for Phase 5.
+- No application code until schema is confirmed
+- Single monolithic file pattern for page components
+- No componentisation
+- No em dashes anywhere including comments
+- Soft delete only, never hard delete user records
+- AUD pricing only
